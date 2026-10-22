@@ -8,3 +8,6 @@ import { Config } from "@remotion/cli/config";
 Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
+
+// The logo debut renders 3D with Three.js, which needs WebGL in headless Chrome.
+Config.setChromiumOpenGlRenderer("angle");

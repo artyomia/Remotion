@@ -28,8 +28,12 @@ const P_FINAL = {
   slotRight: 290.7,
 };
 
-export const pPath = (t: number) => {
-  const bowlBottom = lerp(H, P_FINAL.bowlBottom, t);
+export const pPath = (t: number, opts: { keepNotch?: boolean } = {}) => {
+  // keepNotch: start from a primitive that already has the lower-right notch,
+  // so a solid P never overlaps the A (needed for the 3D letters).
+  const bowlBottom = opts.keepNotch
+    ? P_FINAL.bowlBottom
+    : lerp(H, P_FINAL.bowlBottom, t);
   const slotTop = lerp(SLOT_SEED, P_FINAL.slotTop, t);
   const slotBottom = lerp(SLOT_SEED, P_FINAL.slotBottom, t);
   const slotRight = lerp(0, P_FINAL.slotRight, t);

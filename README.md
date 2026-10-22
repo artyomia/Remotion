@@ -113,6 +113,31 @@ a beat.
 - Only the full-colour and reversed (white + orange) versions are used. The
   logo is never rotated, recoloured or distorted after construction.
 
+## Logo debut for social (`PADLogoDebut`, in progress)
+
+A separate 30 second, 9:16 film that debuts the new logo for Reels, TikTok and
+Facebook, built in 3D with Three.js (`@remotion/three`). Message:
+**"ĐIỂM TỰA CHO MỌI HÀNH TRÌNH"**.
+
+Status: style prototype. Scenes 4 to 6 (7.0 s to 13.0 s) are built: the reach
+stacker lifts the orange block, P and A drop on the snare hits, the D slams
+down on drop 1, the container-letters carve into the monogram and a
+dolly-zoom flattens them into the exact flat logo.
+
+```console
+npx remotion render PADLogoDebut out/debut-prototype.mp4 --frames=210-389
+```
+
+| Path | Content |
+| --- | --- |
+| `src/debut/config.ts` | Music cue frames (measured from the track), message, colours, world scale |
+| `src/debut/three/` | Yard, instanced container stacks, reach stacker (with boom IK), container-letters, camera rig, dust |
+| `src/debut/scenes/` | `HeroBuild` (3D), `LogoReveal` (2D handoff) |
+| `public/debut/impact-reveal.mp3` | Music, 136 BPM |
+| `public/debut/sfx/` | PLACEHOLDER sound effects, synthesized; replace with a licensed pack using the same names |
+
+The 3D renders need WebGL; `remotion.config.ts` sets the `angle` OpenGL renderer.
+
 ## License
 
 Remotion is free for individuals and companies of up to 3 people. Larger teams

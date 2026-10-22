@@ -9,7 +9,8 @@ import {
   PHUOC_SIZE,
 } from "./paths";
 
-export type LogoVariant = "color" | "reversed";
+/** "white" is only for masks and is never shown as artwork. */
+export type LogoVariant = "color" | "reversed" | "white";
 
 /** Per-letter offset used while the monogram is being constructed. */
 export type LetterMotion = {
@@ -71,7 +72,7 @@ export const LogoGroup: React.FC<LogoGroupProps> = ({
 }) => {
   const id = useId().replace(/[^a-zA-Z0-9_-]/g, "");
   const primary = variant === "color" ? COLORS.blue : COLORS.white;
-  const accent = COLORS.orange;
+  const accent = variant === "white" ? COLORS.white : COLORS.orange;
 
   const v = LOCKUPS.vertical;
   const h = LOCKUPS.horizontal;
