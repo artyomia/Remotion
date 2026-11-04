@@ -5,6 +5,7 @@ import { DURATION_IN_FRAMES, FPS } from "./brand";
 import { PADBrandDebut } from "./PADBrandDebut";
 import { DEBUT_DURATION, DEBUT_FPS } from "./debut/config";
 import { PADLogoDebut } from "./debut/PADLogoDebut";
+import { PADDebutFilm } from "./film/PADDebutFilm";
 import { PADSocialDebut } from "./social/PADSocialDebut";
 import { SOCIAL_DURATION, SOCIAL_FPS } from "./social/timeline";
 
@@ -38,6 +39,22 @@ export const RemotionRoot: React.FC = () => {
         fps={DEBUT_FPS}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="PADDebutFilm"
+        component={PADDebutFilm}
+        durationInFrames={SOCIAL_DURATION}
+        fps={SOCIAL_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="PADDebutFilm-4x5"
+        component={PADDebutFilm}
+        durationInFrames={SOCIAL_DURATION}
+        fps={SOCIAL_FPS}
+        width={1080}
+        height={1350}
       />
       <Composition
         id="PADSocialDebut"

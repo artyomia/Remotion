@@ -5,6 +5,8 @@ All on-screen copy is Vietnamese.
 
 | Composition             | Size      | FPS | Frames | Length | What it is |
 | ----------------------- | --------- | --- | ------ | ------ | ---------- |
+| `PADDebutFilm`          | 1080x1920 | 30  | 900    | 30 s   | Social logo debut, live-action AI footage (main version) |
+| `PADDebutFilm-4x5`      | 1080x1350 | 30  | 900    | 30 s   | Same film for Facebook, Instagram, LinkedIn feed |
 | `PADSocialDebut`        | 1080x1920 | 30  | 900    | 30 s   | Social logo debut, 2D (Reels, TikTok, Shorts) |
 | `PADSocialDebut-4x5`    | 1080x1350 | 30  | 900    | 30 s   | Same film for Facebook, Instagram, LinkedIn feed |
 | `PADBrandDebut`         | 1920x1080 | 30  | 1350   | 45 s   | Brand identity film (guideline walkthrough) |
@@ -19,6 +21,8 @@ Both compositions use the same scenes. Every scene reads the frame size with
 ```console
 npm install
 npm run dev                                                 # Remotion Studio
+npx remotion render PADDebutFilm out/PAD-debut-film-9x16.mp4
+npx remotion render PADDebutFilm-4x5 out/PAD-debut-film-4x5.mp4
 npx remotion render PADSocialDebut out/PAD-logo-debut-9x16.mp4
 npx remotion render PADSocialDebut-4x5 out/PAD-logo-debut-4x5.mp4
 npx remotion render PADBrandDebut out/pad-16x9.mp4
@@ -117,6 +121,27 @@ a beat.
   height 3x, P stem x, monogram to wordmark 0.55x, PHUOC AN to DEPOT 0.4x.
 - Only the full-colour and reversed (white + orange) versions are used. The
   logo is never rotated, recoloured or distorted after construction.
+
+## Logo debut film (`PADDebutFilm`, live action)
+
+The same 30 s cut, message and sound design as the 2D debut below, built on
+footage generated in Higgsfield (keyframes from PAD's own fleet photos with GPT
+Image 2.5, animated with Kling 3.0 Pro). The logo itself is never AI-made: on
+drop 1 the orange box filling the frame match-cuts to the orange D, and the
+camera pulls back to the exact vector logo.
+
+| File in `public/debut/footage/` | Used for |
+| --- | --- |
+| `door.mp4` | Opening: doors unlock and open |
+| `lane.mp4` | Fly-through between stacks, montage, drop 2 (until `convoy.mp4` exists) |
+| `truck.mp4` | Three truck cuts, montage, drop 2 (until `convoy.mp4` exists) |
+| `worker.mp4` | "TỪNG CON NGƯỜI.", montage |
+| `stacker.mp4` | Reach stacker lifting a PAD box, montage |
+| `orange-drop.mp4` | Box lowered onto camera; impact at 3.25 s lands on drop 1 |
+| `aerial.mp4` | "CÙNG NHAU,", montage |
+| `convoy.mp4` | Optional. When present it replaces the stand-ins on drop 2 |
+
+Shot timing (clip start, speed, push and focus) is in `src/film/timeline.ts`.
 
 ## Social logo debut (`PADSocialDebut`, 2D)
 

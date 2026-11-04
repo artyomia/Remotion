@@ -2,7 +2,14 @@ import { Audio } from "@remotion/media";
 import React from "react";
 import { Sequence, interpolate, staticFile } from "remotion";
 import { hasPublicFile } from "../lib/assets";
-import { CUE, SFX, SFX_CUES, SOCIAL_DURATION, SOCIAL_MUSIC } from "./timeline";
+import {
+  CUE,
+  SFX,
+  SFX_CUES,
+  SfxName,
+  SOCIAL_DURATION,
+  SOCIAL_MUSIC,
+} from "./timeline";
 
 /** Music level, kept under the sound effects' peaks. */
 const MUSIC_VOLUME = 0.85;
@@ -11,13 +18,15 @@ const MUSIC_VOLUME = 0.85;
  * Music plus every sound effect cue from timeline.ts. A missing file is
  * skipped, so licensed replacements can be dropped in one at a time.
  */
-export const SocialSoundtrack: React.FC = () => {
+export const SocialSoundtrack: React.FC<{
+  cues?: Array<{ at: number; sfx: SfxName; volume: number; rate?: number }>;
+}> = ({ cues = SFX_CUES }) => {
   return (
     <>
       {hasPublicFile(SOCIAL_MUSIC) ? (
         <Audio src={staticFile(SOCIAL_MUSIC)} volume={MUSIC_VOLUME} />
       ) : null}
-      {SFX_CUES.map(({ at, sfx, volume, rate }, i) => {
+      {cues.map(({ at, sfx, volume, rate }, i) => {
         const file = SFX[sfx];
         if (!hasPublicFile(file)) {
           return null;
