@@ -27,7 +27,7 @@ const CW = 1600;
 const CH = 1000;
 
 /** Places a logo lockup with its top-left corner at (x, y). */
-const LogoAt: React.FC<{
+export const LogoAt: React.FC<{
   x: number;
   y: number;
   height: number;
@@ -43,7 +43,7 @@ const LogoAt: React.FC<{
 };
 
 /** The PAD monogram alone (avatar, small marks). */
-const MonogramAt: React.FC<{
+export const MonogramAt: React.FC<{
   x: number;
   y: number;
   height: number;
@@ -60,7 +60,7 @@ const MonogramAt: React.FC<{
 };
 
 /** Small route line motif (flat, 60 degree kink, flat). */
-const routeD = (
+export const routeD = (
   x0: number,
   y: number,
   kink: number,

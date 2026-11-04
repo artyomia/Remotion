@@ -5,6 +5,8 @@ import { DURATION_IN_FRAMES, FPS } from "./brand";
 import { PADBrandDebut } from "./PADBrandDebut";
 import { DEBUT_DURATION, DEBUT_FPS } from "./debut/config";
 import { PADLogoDebut } from "./debut/PADLogoDebut";
+import { PADSocialDebut } from "./social/PADSocialDebut";
+import { SOCIAL_DURATION, SOCIAL_FPS } from "./social/timeline";
 
 /**
  * Two compositions share the same scenes. Every scene reads the frame size
@@ -36,6 +38,22 @@ export const RemotionRoot: React.FC = () => {
         fps={DEBUT_FPS}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="PADSocialDebut"
+        component={PADSocialDebut}
+        durationInFrames={SOCIAL_DURATION}
+        fps={SOCIAL_FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="PADSocialDebut-4x5"
+        component={PADSocialDebut}
+        durationInFrames={SOCIAL_DURATION}
+        fps={SOCIAL_FPS}
+        width={1080}
+        height={1350}
       />
     </>
   );

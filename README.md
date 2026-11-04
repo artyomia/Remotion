@@ -1,12 +1,15 @@
 # PAD - Phuoc An Depot: Brand Identity Debut
 
-A 45-second brand reveal film built with [Remotion](https://www.remotion.dev).
-Clean, precise, premium logistics aesthetic. All on-screen copy is Vietnamese.
+Videos for PAD's new identity, built with [Remotion](https://www.remotion.dev).
+All on-screen copy is Vietnamese.
 
-| Composition             | Size      | FPS | Frames | Length |
-| ----------------------- | --------- | --- | ------ | ------ |
-| `PADBrandDebut`         | 1920x1080 | 30  | 1350   | 45 s   |
-| `PADBrandDebutVertical` | 1080x1920 | 30  | 1350   | 45 s   |
+| Composition             | Size      | FPS | Frames | Length | What it is |
+| ----------------------- | --------- | --- | ------ | ------ | ---------- |
+| `PADSocialDebut`        | 1080x1920 | 30  | 900    | 30 s   | Social logo debut, 2D (Reels, TikTok, Shorts) |
+| `PADSocialDebut-4x5`    | 1080x1350 | 30  | 900    | 30 s   | Same film for Facebook, Instagram, LinkedIn feed |
+| `PADBrandDebut`         | 1920x1080 | 30  | 1350   | 45 s   | Brand identity film (guideline walkthrough) |
+| `PADBrandDebutVertical` | 1080x1920 | 30  | 1350   | 45 s   | Same, vertical |
+| `PADLogoDebut`          | 1080x1920 | 30  | 900    | 30 s   | 3D style prototype (scenes 4 to 6 only) |
 
 Both compositions use the same scenes. Every scene reads the frame size with
 `useVideoConfig()` and switches to a vertical layout (60px margins instead of 120px).
@@ -16,6 +19,8 @@ Both compositions use the same scenes. Every scene reads the frame size with
 ```console
 npm install
 npm run dev                                                 # Remotion Studio
+npx remotion render PADSocialDebut out/PAD-logo-debut-9x16.mp4
+npx remotion render PADSocialDebut-4x5 out/PAD-logo-debut-4x5.mp4
 npx remotion render PADBrandDebut out/pad-16x9.mp4
 npx remotion render PADBrandDebutVertical out/pad-9x16.mp4
 npm run lint                                                # ESLint + TypeScript
@@ -113,7 +118,42 @@ a beat.
 - Only the full-colour and reversed (white + orange) versions are used. The
   logo is never rotated, recoloured or distorted after construction.
 
-## Logo debut for social (`PADLogoDebut`, in progress)
+## Social logo debut (`PADSocialDebut`, 2D)
+
+30 seconds, cut to the supplied track (`public/debut/impact-reveal.mp3`,
+100 BPM, beats every 18 frames, drops on frames 324 and 612). The message
+follows the tagline LOGISTICS / PEOPLE / FORWARD TOGETHER:
+
+> TỪNG CONTAINER. TỪNG CHUYẾN XE. TỪNG CON NGƯỜI. ĐỀU ĐƯỢC NÂNG TẦM.
+> [logo] DIỆN MẠO MỚI. CÙNG NHAU, TIẾN VỀ PHÍA TRƯỚC.
+
+| Time | Scene | File |
+| --- | --- | --- |
+| 0 to 2.2 s | Container doors unlock and swing open | `src/social/scenes/S01Doors.tsx` |
+| 2.2 to 3.6 s | Fly-through of a container lane | `S02Corridor.tsx` |
+| 3.6 to 4.8 s | Truck, three cuts on three accents | `S03Truck.tsx` |
+| 4.8 to 6.0 s | Yard worker signalling | `S04Worker.tsx` |
+| 6.0 to 8.4 s | Reach stacker skids in, picks up a box | `S05Stacker.tsx` |
+| 8.4 to 14.4 s | Boxes build P and A, the orange D slams on drop 1, logo, "DIỆN MẠO MỚI" | `S06LogoBuild.tsx` |
+| 14.4 to 18.0 s | Logo in the world, one shot per beat | `S07Montage.tsx` |
+| 18.0 to 20.4 s | Yard lamps switch on, "CÙNG NHAU," | `S08Together.tsx` |
+| 20.4 to 25.2 s | Drop 2, convoy, "TIẾN VỀ PHÍA TRƯỚC." | `S09Forward.tsx` |
+| 25.2 to 30 s | End card | `S10EndCard.tsx` |
+
+- `src/social/timeline.ts`: cue frames, scene ranges, copy, palette, machine
+  colours and every sound-effect cue (frame, file, level).
+- `src/social/art/`: blue-hour backdrop, perspective container lane, and the
+  rigs (reach stacker with working boom and spreader, truck, worker, doors).
+- Text stays inside the platform-safe band: 9:16 keeps clear of the top 250px,
+  the bottom 400px and the right 150px.
+- The reach stacker uses PAD's machine colours (red body, black boom). For a
+  brand-colour machine, change `STACKER` in `timeline.ts`.
+
+**Sound effects** in `public/debut/sfx/` are synthesized placeholders (25
+files). Replace any of them with a licensed file of the same name; a missing
+file is skipped, not an error.
+
+## 3D style prototype (`PADLogoDebut`)
 
 A separate 30 second, 9:16 film that debuts the new logo for Reels, TikTok and
 Facebook, built in 3D with Three.js (`@remotion/three`). Message:
